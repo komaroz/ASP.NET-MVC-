@@ -1,0 +1,123 @@
+﻿@model IEnumerable<TP3_KVGN.Models.user>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    @if (Session["login"].Equals("admin"))
+    {
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.login)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.motdepasse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.permis_conduire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type_compte)
+            </th>
+            <th></th>
+        </tr>
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.login)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.motdepasse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.permis_conduire)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type_compte)
+                </td>
+                <td>
+                    @Html.ActionLink("Create New", "Create")
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id_user }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id_user }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id_user })
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.login)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.motdepasse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.permis_conduire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>
+            <th></th>
+        </tr>
+        foreach (var item in Model)
+        {
+            if (item.login.Equals((string)Session["login"]))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.login)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.motdepasse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.permis_conduire)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prenom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.type)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id_user }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id_user }) |
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>

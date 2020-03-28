@@ -1,0 +1,76 @@
+﻿@model TP3_KVGN.Models.user
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>user</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.motdepasse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.motdepasse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.permis_conduire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.permis_conduire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type_compte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type_compte)
+        </dd>
+
+    </dl>
+</div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id_user }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+

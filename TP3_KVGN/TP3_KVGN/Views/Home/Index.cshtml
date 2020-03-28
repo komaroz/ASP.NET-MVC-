@@ -1,0 +1,41 @@
+﻿@model TP3_KVGN.Models.vehicule
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>CATALOGUE D'AUTO</h1>
+    <p class="lead"></p>
+    <p>@Html.ActionLink("Connextion", "Index", "Login", new { area = "" }, new { @class = "btn btn-primary btn-lg" })</p>
+</div>
+
+<div>
+    <div>
+        <h2>Recherché - acheté, recherché - vendu</h2>
+        <div>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Catalogue d'auto.ca aide à acheter ou vendre une voiture.
+            Ce n'est pas seulement un site où tout le monde peut trouver ou placer une annonce (même si, bien sûr, tout le monde peut),
+            la tâche de Catalogue d'auto.ca est de protéger une personne contre les problèmes associés à l'achat et à la vente d'une voiture.
+            Nous pensons que la commodité de l'interface ou le nombre d'offres ne surprendra personne. C'est comme la climatisation ou les vitres électriques
+            - ils devraient être dans la base. Par conséquent, Catalogue d'auto.ca prend soin de la tranquillité d'esprit des utilisateurs et travaille pour
+            que la transaction soit une joie.
+        </div>
+        <div>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Nous pouvons placer une annonce à part entière à l'aide d'un smartphone, les numéros de plaque d'immatriculation sont automatiquement peints sur les photos,
+            la propreté légale des voitures est vérifiée dans le système Autocode, le service Smart Number protège contre le spam et les appels des revendeurs,
+            il existe une forme standard de contrat de vente vérifiée par des avocats. Et nous n'avons pas encore fini.
+        </div>
+        <div>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Nous voulons que le marché automobile devienne plus sûr et plus confortable pour la personne moyenne.
+            Catalogue d'auto.ca, que nous recherchons, est un endroit où vous pouvez venir sans beaucoup d'expérience et être sûr d'acheter
+            la voiture souhaitée en bon état ou de vendre la vôtre à un bon prix. Avec plaisir.
+        </div>
+    </div>
+    <hr />
+    <marquee behavior="alternate" scroledelay="3" scrollamount="3">
+        <a href="@Url.Action("Details", "vehicules", new { id = 1 })"><img src="~/Images/mazda3_sedan.png" style="height:250px" /></a>
+        <a href="@Url.Action("ActionName", "ControllerName", new { id = 1 })"><img src="~/Images/civic_sedan_2015.png" style="height:250px" /></a>
+        <a href="@Url.Action("ActionName", "ControllerName", new { id = 1 })"><img src="~/Images/escape_2015.png" style="height:250px" /></a>
+    </marquee>
+</div>
