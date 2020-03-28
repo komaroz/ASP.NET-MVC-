@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TP3_KVGN.Models.user>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Page administration</title>
+    <style>
+
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <div>
+            @using (TP3_KVGN.Models.BD_CatalogueEntities db = new TP3_KVGN.Models.BD_CatalogueEntities())
+            {
+                foreach (var item in db.users)
+                {
+
+                    if (item.login.Equals((string)Session["login"]))
+                    {
+                        <span> Bienvenue <b>@Session["login"]</b> dans votre espace membre</span>
+                    }
+                }
+            }
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+

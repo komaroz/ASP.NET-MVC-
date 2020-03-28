@@ -1,0 +1,50 @@
+﻿@model TP3_KVGN.Models.commande
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>commande</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date_rdv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_rdv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mode_paiement.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mode_paiement.nom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_commande }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

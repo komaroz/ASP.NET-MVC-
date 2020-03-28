@@ -1,0 +1,92 @@
+﻿@model TP3_KVGN.Models.user
+
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.Title = "Login";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <div id="login-div">
+
+            @using (Html.BeginForm("Autoriser", "Login", FormMethod.Post))
+            {<br><br><br><br>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td style="text-decoration:underline">Connexion</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.login)
+                        </td>
+
+                        <td>
+                            @Html.EditorFor(model => model.login)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.ValidationMessageFor(model => model.login)</td>
+                    </tr>
+                    <tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(model => model.motdepasse)</td>
+                        <td>@Html.EditorFor(model => model.motdepasse)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.ValidationMessageFor(model => model.motdepasse)</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" name="nameLogin" value="Login" />
+                        </td>
+                    </tr>
+                </table>
+                <br><br><br><br>
+            }
+            @using (Html.BeginForm("Create", "users", FormMethod.Get))
+            {
+                <table>
+                    <tr>
+                        <td></td>
+                        <td style="text-decoration:underline">Inscription</td>
+                    </tr>
+                    <tr>
+                        <td><b>Première utilisation?</b></td>
+                        <td>
+                            <input type="submit" name="inscription" value="S’inscrire" />
+                        </td>
+                    </tr>
+                </table>
+            }
+
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BD_CatalogueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bon_commande">
+    <Key>
+      <PropertyRef Name="id_bon_commande" />
+    </Key>
+    <Property Name="id_bon_commande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_vehicule" Type="Int32" />
+    <Property Name="id_commande" Type="Int32" />
+    <NavigationProperty Name="vehicule" Relationship="Self.FK10_dbo" FromRole="bon_commande" ToRole="vehicule" />
+    <NavigationProperty Name="commande" Relationship="Self.FK11_dbo" FromRole="bon_commande" ToRole="commande" />
+  </EntityType>
+  <EntityType Name="carburant">
+    <Key>
+      <PropertyRef Name="id_carburant" />
+    </Key>
+    <Property Name="id_carburant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="vehicules" Relationship="Self.FK5_dbo" FromRole="carburant" ToRole="vehicule" />
+  </EntityType>
+  <EntityType Name="commande">
+    <Key>
+      <PropertyRef Name="id_commande" />
+    </Key>
+    <Property Name="id_commande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_rdv" Type="DateTime" Precision="0" />
+    <Property Name="id_user" Type="Int32" />
+    <Property Name="id_status" Type="Int32" />
+    <Property Name="id_mode_paiement" Type="Int32" />
+    <NavigationProperty Name="bon_commande" Relationship="Self.FK11_dbo" FromRole="commande" ToRole="bon_commande" />
+    <NavigationProperty Name="user" Relationship="Self.FK7_dbo" FromRole="commande" ToRole="user" />
+    <NavigationProperty Name="status" Relationship="Self.FK8_dbo" FromRole="commande" ToRole="status" />
+    <NavigationProperty Name="mode_paiement" Relationship="Self.FK9_dbo" FromRole="commande" ToRole="mode_paiement" />
+  </EntityType>
+  <EntityType Name="couleur">
+    <Key>
+      <PropertyRef Name="id_couleur" />
+    </Key>
+    <Property Name="id_couleur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="vehicules" Relationship="Self.FK4_dbo" FromRole="couleur" ToRole="vehicule" />
+  </EntityType>
+  <EntityType Name="etat">
+    <Key>
+      <PropertyRef Name="id_etat" />
+    </Key>
+    <Property Name="id_etat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="vehicules" Relationship="Self.FK6_dbo" FromRole="etat" ToRole="vehicule" />
+  </EntityType>
+  <EntityType Name="marque">
+    <Key>
+      <PropertyRef Name="id_marque" />
+    </Key>
+    <Property Name="id_marque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="modeles" Relationship="Self.FK1_dbo" FromRole="marque" ToRole="modele" />
+  </EntityType>
+  <EntityType Name="mode_paiement">
+    <Key>
+      <PropertyRef Name="id_mode_paiement" />
+    </Key>
+    <Property Name="id_mode_paiement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="commandes" Relationship="Self.FK9_dbo" FromRole="mode_paiement" ToRole="commande" />
+  </EntityType>
+  <EntityType Name="modele">
+    <Key>
+      <PropertyRef Name="id_modele" />
+    </Key>
+    <Property Name="id_modele" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="id_marque" Type="Int32" />
+    <NavigationProperty Name="marque" Relationship="Self.FK1_dbo" FromRole="modele" ToRole="marque" />
+    <NavigationProperty Name="vehicules" Relationship="Self.FK3_dbo" FromRole="modele" ToRole="vehicule" />
+  </EntityType>
+  <EntityType Name="option">
+    <Key>
+      <PropertyRef Name="id_option" />
+    </Key>
+    <Property Name="id_option" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prix" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="id_status" />
+    </Key>
+    <Property Name="id_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="commandes" Relationship="Self.FK8_dbo" FromRole="status" ToRole="commande" />
+  </EntityType>
+  <EntityType Name="type">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="vehicules" Relationship="Self.FK2_dbo" FromRole="type" ToRole="vehicule" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="motdepasse" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="permis_conduire" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="type_compte" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="commandes" Relationship="Self.FK7_dbo" FromRole="user" ToRole="commande" />
+  </EntityType>
+  <EntityType Name="vehicule">
+    <Key>
+      <PropertyRef Name="id_vehicule" />
+    </Key>
+    <Property Name="id_vehicule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="immatriculation" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="prix" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="kilometrage" Type="Int32" />
+    <Property Name="date_construction" Type="DateTime" Precision="0" />
+    <Property Name="date_mise_vente" Type="DateTime" Precision="0" />
+    <Property Name="est_vendu" Type="Boolean" Nullable="false" />
+    <Property Name="id_type" Type="Int32" />
+    <Property Name="id_modele" Type="Int32" />
+    <Property Name="id_couleur" Type="Int32" />
+    <Property Name="id_carburant" Type="Int32" />
+    <Property Name="id_etat" Type="Int32" />
+    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="bon_commande" Relationship="Self.FK10_dbo" FromRole="vehicule" ToRole="bon_commande" />
+    <NavigationProperty Name="carburant" Relationship="Self.FK5_dbo" FromRole="vehicule" ToRole="carburant" />
+    <NavigationProperty Name="couleur" Relationship="Self.FK4_dbo" FromRole="vehicule" ToRole="couleur" />
+    <NavigationProperty Name="etat" Relationship="Self.FK6_dbo" FromRole="vehicule" ToRole="etat" />
+    <NavigationProperty Name="modele" Relationship="Self.FK3_dbo" FromRole="vehicule" ToRole="modele" />
+    <NavigationProperty Name="type" Relationship="Self.FK2_dbo" FromRole="vehicule" ToRole="type" />
+  </EntityType>
+  <Association Name="FK10_dbo">
+    <End Role="vehicule" Type="Self.vehicule" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="bon_commande" Type="Self.bon_commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicule">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="bon_commande">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK11_dbo">
+    <End Role="commande" Type="Self.commande" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="bon_commande" Type="Self.bon_commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="commande">
+        <PropertyRef Name="id_commande" />
+      </Principal>
+      <Dependent Role="bon_commande">
+        <PropertyRef Name="id_commande" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK5_dbo">
+    <End Role="carburant" Type="Self.carburant" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="vehicule" Type="Self.vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carburant">
+        <PropertyRef Name="id_carburant" />
+      </Principal>
+      <Dependent Role="vehicule">
+        <PropertyRef Name="id_carburant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK7_dbo">
+    <End Role="user" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="commande" Type="Self.commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="commande">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK8_dbo">
+    <End Role="status" Type="Self.status" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="commande" Type="Self.commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="id_status" />
+      </Principal>
+      <Dependent Role="commande">
+        <PropertyRef Name="id_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK9_dbo">
+    <End Role="mode_paiement" Type="Self.mode_paiement" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="commande" Type="Self.commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mode_paiement">
+        <PropertyRef Name="id_mode_paiement" />
+      </Principal>
+      <Dependent Role="commande">
+        <PropertyRef Name="id_mode_paiement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK4_dbo">
+    <End Role="couleur" Type="Self.couleur" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="vehicule" Type="Self.vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="couleur">
+        <PropertyRef Name="id_couleur" />
+      </Principal>
+      <Dependent Role="vehicule">
+        <PropertyRef Name="id_couleur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK6_dbo">
+    <End Role="etat" Type="Self.etat" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="vehicule" Type="Self.vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="etat">
+        <PropertyRef Name="id_etat" />
+      </Principal>
+      <Dependent Role="vehicule">
+        <PropertyRef Name="id_etat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_dbo">
+    <End Role="marque" Type="Self.marque" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="modele" Type="Self.modele" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="marque">
+        <PropertyRef Name="id_marque" />
+      </Principal>
+      <Dependent Role="modele">
+        <PropertyRef Name="id_marque" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_dbo">
+    <End Role="modele" Type="Self.modele" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="vehicule" Type="Self.vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modele">
+        <PropertyRef Name="id_modele" />
+      </Principal>
+      <Dependent Role="vehicule">
+        <PropertyRef Name="id_modele" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_dbo">
+    <End Role="type" Type="Self.type" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="vehicule" Type="Self.vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="vehicule">
+        <PropertyRef Name="id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BD_CatalogueEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bon_commande" EntityType="Self.bon_commande" />
+    <EntitySet Name="carburants" EntityType="Self.carburant" />
+    <EntitySet Name="commandes" EntityType="Self.commande" />
+    <EntitySet Name="couleurs" EntityType="Self.couleur" />
+    <EntitySet Name="etats" EntityType="Self.etat" />
+    <EntitySet Name="marques" EntityType="Self.marque" />
+    <EntitySet Name="mode_paiement" EntityType="Self.mode_paiement" />
+    <EntitySet Name="modeles" EntityType="Self.modele" />
+    <EntitySet Name="options" EntityType="Self.option" />
+    <EntitySet Name="status" EntityType="Self.status" />
+    <EntitySet Name="types" EntityType="Self.type" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="vehicules" EntityType="Self.vehicule" />
+    <AssociationSet Name="FK10_dbo" Association="Self.FK10_dbo">
+      <End Role="vehicule" EntitySet="vehicules" />
+      <End Role="bon_commande" EntitySet="bon_commande" />
+    </AssociationSet>
+    <AssociationSet Name="FK11_dbo" Association="Self.FK11_dbo">
+      <End Role="commande" EntitySet="commandes" />
+      <End Role="bon_commande" EntitySet="bon_commande" />
+    </AssociationSet>
+    <AssociationSet Name="FK5_dbo" Association="Self.FK5_dbo">
+      <End Role="carburant" EntitySet="carburants" />
+      <End Role="vehicule" EntitySet="vehicules" />
+    </AssociationSet>
+    <AssociationSet Name="FK7_dbo" Association="Self.FK7_dbo">
+      <End Role="user" EntitySet="users" />
+      <End Role="commande" EntitySet="commandes" />
+    </AssociationSet>
+    <AssociationSet Name="FK8_dbo" Association="Self.FK8_dbo">
+      <End Role="status" EntitySet="status" />
+      <End Role="commande" EntitySet="commandes" />
+    </AssociationSet>
+    <AssociationSet Name="FK9_dbo" Association="Self.FK9_dbo">
+      <End Role="mode_paiement" EntitySet="mode_paiement" />
+      <End Role="commande" EntitySet="commandes" />
+    </AssociationSet>
+    <AssociationSet Name="FK4_dbo" Association="Self.FK4_dbo">
+      <End Role="couleur" EntitySet="couleurs" />
+      <End Role="vehicule" EntitySet="vehicules" />
+    </AssociationSet>
+    <AssociationSet Name="FK6_dbo" Association="Self.FK6_dbo">
+      <End Role="etat" EntitySet="etats" />
+      <End Role="vehicule" EntitySet="vehicules" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_dbo" Association="Self.FK1_dbo">
+      <End Role="marque" EntitySet="marques" />
+      <End Role="modele" EntitySet="modeles" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_dbo" Association="Self.FK3_dbo">
+      <End Role="modele" EntitySet="modeles" />
+      <End Role="vehicule" EntitySet="vehicules" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_dbo" Association="Self.FK2_dbo">
+      <End Role="type" EntitySet="types" />
+      <End Role="vehicule" EntitySet="vehicules" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

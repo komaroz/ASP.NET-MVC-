@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BD_CatalogueModelStoreContainer" CdmEntityContainer="BD_CatalogueEntities">
+    <EntitySetMapping Name="bon_commande">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.bon_commande">
+        <MappingFragment StoreEntitySet="bon_commande">
+          <ScalarProperty Name="id_bon_commande" ColumnName="id_bon_commande" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="id_commande" ColumnName="id_commande" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carburants">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.carburant">
+        <MappingFragment StoreEntitySet="carburant">
+          <ScalarProperty Name="id_carburant" ColumnName="id_carburant" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="commandes">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.commande">
+        <MappingFragment StoreEntitySet="commande">
+          <ScalarProperty Name="id_commande" ColumnName="id_commande" />
+          <ScalarProperty Name="date_rdv" ColumnName="date_rdv" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id_status" ColumnName="id_status" />
+          <ScalarProperty Name="id_mode_paiement" ColumnName="id_mode_paiement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="couleurs">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.couleur">
+        <MappingFragment StoreEntitySet="couleur">
+          <ScalarProperty Name="id_couleur" ColumnName="id_couleur" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="etats">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.etat">
+        <MappingFragment StoreEntitySet="etat">
+          <ScalarProperty Name="id_etat" ColumnName="id_etat" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="marques">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.marque">
+        <MappingFragment StoreEntitySet="marque">
+          <ScalarProperty Name="id_marque" ColumnName="id_marque" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mode_paiement">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.mode_paiement">
+        <MappingFragment StoreEntitySet="mode_paiement">
+          <ScalarProperty Name="id_mode_paiement" ColumnName="id_mode_paiement" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="modeles">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.modele">
+        <MappingFragment StoreEntitySet="modele">
+          <ScalarProperty Name="id_modele" ColumnName="id_modele" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="id_marque" ColumnName="id_marque" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="options">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.option">
+        <MappingFragment StoreEntitySet="option">
+          <ScalarProperty Name="id_option" ColumnName="id_option" />
+          <ScalarProperty Name="prix" ColumnName="prix" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.status">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="id_status" ColumnName="id_status" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="types">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.type">
+        <MappingFragment StoreEntitySet="type">
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="motdepasse" ColumnName="motdepasse" />
+          <ScalarProperty Name="permis_conduire" ColumnName="permis_conduire" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="type_compte" ColumnName="type_compte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vehicules">
+      <EntityTypeMapping TypeName="BD_CatalogueModel.vehicule">
+        <MappingFragment StoreEntitySet="vehicule">
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="immatriculation" ColumnName="immatriculation" />
+          <ScalarProperty Name="prix" ColumnName="prix" />
+          <ScalarProperty Name="kilometrage" ColumnName="kilometrage" />
+          <ScalarProperty Name="date_construction" ColumnName="date_construction" />
+          <ScalarProperty Name="date_mise_vente" ColumnName="date_mise_vente" />
+          <ScalarProperty Name="est_vendu" ColumnName="est_vendu" />
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="id_modele" ColumnName="id_modele" />
+          <ScalarProperty Name="id_couleur" ColumnName="id_couleur" />
+          <ScalarProperty Name="id_carburant" ColumnName="id_carburant" />
+          <ScalarProperty Name="id_etat" ColumnName="id_etat" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

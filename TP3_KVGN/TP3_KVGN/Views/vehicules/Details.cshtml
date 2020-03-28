@@ -1,0 +1,145 @@
+﻿@model TP3_KVGN.Models.vehicule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>vehicule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.immatriculation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.immatriculation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kilometrage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kilometrage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_construction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_construction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_mise_vente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_mise_vente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.est_vendu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.est_vendu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.carburant.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.carburant.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.couleur.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.couleur.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.etat.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.etat.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modele.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modele.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type.nom)
+        </dd>
+
+    </dl>
+</div>
+
+
+
+@using (TP3_KVGN.Models.BD_CatalogueEntities db = new TP3_KVGN.Models.BD_CatalogueEntities())
+{
+    IEnumerable<TP3_KVGN.Models.user> u = db.users.ToList();
+
+
+    foreach (var item in u)
+    {
+        if (item.login == (string)Session["login"])
+        {
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.id_vehicule }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+            break;
+        }
+        else
+        {
+            <p>
+                @Html.ActionLink("Back to HomePage", "ReturnToHomePage")
+            </p>
+            break;
+        }
+    }
+}
